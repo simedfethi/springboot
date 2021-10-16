@@ -1,0 +1,10 @@
+{
+  "tripApp": {
+    "GovernmentIDType": {
+      "null": "",
+      "ID": "ID",
+      "PASSPORT": "PASSPORT",
+      "DRIVERLICENCE": "DRIVERLICENCE"
+    }
+  }
+}

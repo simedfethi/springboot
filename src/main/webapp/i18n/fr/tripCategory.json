@@ -1,0 +1,25 @@
+{
+  "tripApp": {
+    "tripCategory": {
+      "home": {
+        "title": "TripCategories",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Trip Category",
+        "createOrEditLabel": "Créer ou éditer un Trip Category",
+        "notFound": "Aucun Trip Category trouvé"
+      },
+      "created": "Un nouveau Trip Category a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Trip Category avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Trip Category avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Trip Category {{ id }} ?"
+      },
+      "detail": {
+        "title": "Trip Category"
+      },
+      "id": "ID",
+      "categoryname": "Categoryname",
+      "tripdetail": "Tripdetail"
+    }
+  }
+}

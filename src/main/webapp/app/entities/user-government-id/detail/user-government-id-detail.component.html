@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userGovernmentID">
+      <h2 data-cy="userGovernmentIDDetailsHeading"><span jhiTranslate="tripApp.userGovernmentID.detail.title">User Government ID</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userGovernmentID.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userGovernmentID.country">Country</span></dt>
+        <dd>
+          <span>{{ userGovernmentID.country }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userGovernmentID.docType">Doc Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'tripApp.GovernmentIDType.' + userGovernmentID.docType }}">{{ userGovernmentID.docType }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userGovernmentID.docPicRect">Doc Pic Rect</span></dt>
+        <dd>
+          <div *ngIf="userGovernmentID.docPicRect">
+            <a (click)="openFile(userGovernmentID.docPicRect, userGovernmentID.docPicRectContentType)">
+              <img
+                [src]="'data:' + userGovernmentID.docPicRectContentType + ';base64,' + userGovernmentID.docPicRect"
+                style="max-width: 100%"
+                alt="userGovernmentID image"
+              />
+            </a>
+            {{ userGovernmentID.docPicRectContentType }}, {{ byteSize(userGovernmentID.docPicRect) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userGovernmentID.docPicVers">Doc Pic Vers</span></dt>
+        <dd>
+          <div *ngIf="userGovernmentID.docPicVers">
+            <a (click)="openFile(userGovernmentID.docPicVers, userGovernmentID.docPicVersContentType)">
+              <img
+                [src]="'data:' + userGovernmentID.docPicVersContentType + ';base64,' + userGovernmentID.docPicVers"
+                style="max-width: 100%"
+                alt="userGovernmentID image"
+              />
+            </a>
+            {{ userGovernmentID.docPicVersContentType }}, {{ byteSize(userGovernmentID.docPicVers) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userGovernmentID.docPicInst">Doc Pic Inst</span></dt>
+        <dd>
+          <div *ngIf="userGovernmentID.docPicInst">
+            <a (click)="openFile(userGovernmentID.docPicInst, userGovernmentID.docPicInstContentType)">
+              <img
+                [src]="'data:' + userGovernmentID.docPicInstContentType + ';base64,' + userGovernmentID.docPicInst"
+                style="max-width: 100%"
+                alt="userGovernmentID image"
+              />
+            </a>
+            {{ userGovernmentID.docPicInstContentType }}, {{ byteSize(userGovernmentID.docPicInst) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userGovernmentID.idVerified">Id Verified</span></dt>
+        <dd>
+          <span>{{ userGovernmentID.idVerified }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userGovernmentID.user">User</span></dt>
+        <dd>
+          <span>{{ userGovernmentID.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-government-id', userGovernmentID.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

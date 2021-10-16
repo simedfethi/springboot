@@ -1,0 +1,84 @@
+DEFAULT_MIN_LENGTH = 4
+DEFAULT_MAX_LENGTH = 50
+
+entity Publisher {
+  name String required unique maxlength(100)
+}
+
+entity ApplicationUser {
+  firstName String required maxlength(DEFAULT_MAX_LENGTH)
+  lastName String  required maxlength(DEFAULT_MAX_LENGTH)
+  email String unique maxlength(DEFAULT_MAX_LENGTH)
+  address String maxlength(DEFAULT_MAX_LENGTH)
+  phone String maxlength(20)
+  mobilePhone String maxlength(20)
+}
+entity UserPhone {
+  phoneNumber String required maxlength(DEFAULT_MAX_LENGTH)
+  verified Boolean
+}
+entity UserPreferences {
+  language String required maxlength(DEFAULT_MAX_LENGTH)
+  currency String required maxlength(DEFAULT_MAX_LENGTH)
+  timeZone String  maxlength(DEFAULT_MAX_LENGTH)
+}
+entity UserGovernmentID {
+  country String  maxlength(DEFAULT_MAX_LENGTH)
+  docType GovernmentIDType
+  docPicRect ImageBlob
+  docPicVers ImageBlob
+  docPicInst ImageBlob
+  IdVerified Boolean
+}
+enum GovernmentIDType {
+    ID, PASSPORT, DRIVERLICENCE
+}
+entity Notifications {
+  title String  maxlength(DEFAULT_MAX_LENGTH)
+  content String  maxlength(DEFAULT_MAX_LENGTH)
+}
+entity TripGroups {
+  title String  maxlength(DEFAULT_MAX_LENGTH)
+  description String  maxlength(DEFAULT_MAX_LENGTH)
+}
+
+relationship ManyToOne {
+  ApplicationUser{internalUser(login)} to User{applicationuser},
+UserPhone{internalUser(login)} to User{applicationuser},
+UserPreferences{internalUser(login)} to User{up},
+UserGovernmentID{User(login)} to User{ugovid},
+Notifications{User(login)} to User{notification}
+}
+relationship ManyToMany {
+TripGroups{internalUser(login)}  to  User{tripgroup}
+}
+
+entity Tripdetail{
+    minimumList Integer
+    maximumList Integer
+    createdDate LocalDate
+    lastupdated LocalDate
+    departureDate LocalDate
+    arrivalDate LocalDate
+    contentDate ZonedDateTime
+}
+entity TripCategory {
+    categoryname String maxlength(DEFAULT_MAX_LENGTH)
+}
+relationship ManyToOne {
+ Tripdetail{tripmaster(login)} to User{tripdetail}
+}
+relationship ManyToOne {
+    Tripdetail{category(categoryname)} to TripCategory{tripdetail}
+}
+entity AdressList{
+    Street String
+    StreetSuite String
+    PostalCode String
+    State String
+    Country String
+    latitude Double
+    longitude Double
+}
+
+

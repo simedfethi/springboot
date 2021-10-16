@@ -1,0 +1,32 @@
+{
+  "tripApp": {
+    "tripdetail": {
+      "home": {
+        "title": "Tripdetails",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Tripdetail",
+        "createOrEditLabel": "Créer ou éditer un Tripdetail",
+        "notFound": "Aucun Tripdetail trouvé"
+      },
+      "created": "Un nouveau Tripdetail a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Tripdetail avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Tripdetail avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Tripdetail {{ id }} ?"
+      },
+      "detail": {
+        "title": "Tripdetail"
+      },
+      "id": "ID",
+      "minimumList": "Minimum List",
+      "maximumList": "Maximum List",
+      "createdDate": "Created Date",
+      "lastupdated": "Lastupdated",
+      "departureDate": "Departure Date",
+      "arrivalDate": "Arrival Date",
+      "contentDate": "Content Date",
+      "tripmaster": "Tripmaster",
+      "category": "Category"
+    }
+  }
+}

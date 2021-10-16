@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd">
+    <!--
+        Added the constraints for entity TripGroups.
+    -->
+    <changeSet id="20211003115014-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="trip_groups_id"
+                                 baseTableName="rel_trip_groups__internal_user"
+                                 constraintName="fk_rel_trip_groups__internal_user__trip_groups_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="trip_groups"/>
+
+        <addForeignKeyConstraint baseColumnNames="internal_user_id"
+                                 baseTableName="rel_trip_groups__internal_user"
+                                 constraintName="fk_rel_trip_groups__internal_user__internal_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

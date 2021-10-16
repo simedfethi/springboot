@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tripdetail">
+      <h2 data-cy="tripdetailDetailsHeading"><span jhiTranslate="tripApp.tripdetail.detail.title">Tripdetail</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tripdetail.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.minimumList">Minimum List</span></dt>
+        <dd>
+          <span>{{ tripdetail.minimumList }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.maximumList">Maximum List</span></dt>
+        <dd>
+          <span>{{ tripdetail.maximumList }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.createdDate">Created Date</span></dt>
+        <dd>
+          <span>{{ tripdetail.createdDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.lastupdated">Lastupdated</span></dt>
+        <dd>
+          <span>{{ tripdetail.lastupdated | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.departureDate">Departure Date</span></dt>
+        <dd>
+          <span>{{ tripdetail.departureDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.arrivalDate">Arrival Date</span></dt>
+        <dd>
+          <span>{{ tripdetail.arrivalDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.contentDate">Content Date</span></dt>
+        <dd>
+          <span>{{ tripdetail.contentDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.tripmaster">Tripmaster</span></dt>
+        <dd>
+          <span>{{ tripdetail.tripmaster?.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.tripdetail.category">Category</span></dt>
+        <dd>
+          <div *ngIf="tripdetail.category">
+            <a [routerLink]="['/trip-category', tripdetail.category?.id, 'view']">{{ tripdetail.category?.categoryname }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tripdetail', tripdetail.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

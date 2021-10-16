@@ -1,0 +1,229 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-user-government-id-heading"
+        data-cy="UserGovernmentIDCreateUpdateHeading"
+        jhiTranslate="tripApp.userGovernmentID.home.createOrEditLabel"
+      >
+        Create or edit a User Government ID
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.userGovernmentID.country" for="field_country">Country</label>
+          <input type="text" class="form-control" name="country" id="field_country" data-cy="country" formControlName="country" />
+          <div *ngIf="editForm.get('country')!.invalid && (editForm.get('country')!.dirty || editForm.get('country')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('country')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50 }"
+            >
+              This field cannot be longer than 50 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.userGovernmentID.docType" for="field_docType">Doc Type</label>
+          <select class="form-control" name="docType" formControlName="docType" id="field_docType" data-cy="docType">
+            <option [ngValue]="null">{{ 'tripApp.GovernmentIDType.null' | translate }}</option>
+            <option value="ID">{{ 'tripApp.GovernmentIDType.ID' | translate }}</option>
+            <option value="PASSPORT">{{ 'tripApp.GovernmentIDType.PASSPORT' | translate }}</option>
+            <option value="DRIVERLICENCE">{{ 'tripApp.GovernmentIDType.DRIVERLICENCE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.userGovernmentID.docPicRect" for="field_docPicRect">Doc Pic Rect</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('docPicRectContentType')!.value + ';base64,' + editForm.get('docPicRect')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('docPicRect')!.value"
+              alt="userGovernmentID image"
+            />
+            <div *ngIf="editForm.get('docPicRect')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left"
+                >{{ editForm.get('docPicRectContentType')!.value }}, {{ byteSize(editForm.get('docPicRect')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('docPicRect', 'docPicRectContentType', 'file_docPicRect')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_docPicRect"
+              data-cy="docPicRect"
+              (change)="setFileData($event, 'docPicRect', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="docPicRect"
+            id="field_docPicRect"
+            data-cy="docPicRect"
+            formControlName="docPicRect"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="docPicRectContentType"
+            id="field_docPicRectContentType"
+            formControlName="docPicRectContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.userGovernmentID.docPicVers" for="field_docPicVers">Doc Pic Vers</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('docPicVersContentType')!.value + ';base64,' + editForm.get('docPicVers')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('docPicVers')!.value"
+              alt="userGovernmentID image"
+            />
+            <div *ngIf="editForm.get('docPicVers')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left"
+                >{{ editForm.get('docPicVersContentType')!.value }}, {{ byteSize(editForm.get('docPicVers')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('docPicVers', 'docPicVersContentType', 'file_docPicVers')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_docPicVers"
+              data-cy="docPicVers"
+              (change)="setFileData($event, 'docPicVers', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="docPicVers"
+            id="field_docPicVers"
+            data-cy="docPicVers"
+            formControlName="docPicVers"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="docPicVersContentType"
+            id="field_docPicVersContentType"
+            formControlName="docPicVersContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.userGovernmentID.docPicInst" for="field_docPicInst">Doc Pic Inst</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('docPicInstContentType')!.value + ';base64,' + editForm.get('docPicInst')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('docPicInst')!.value"
+              alt="userGovernmentID image"
+            />
+            <div *ngIf="editForm.get('docPicInst')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left"
+                >{{ editForm.get('docPicInstContentType')!.value }}, {{ byteSize(editForm.get('docPicInst')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('docPicInst', 'docPicInstContentType', 'file_docPicInst')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_docPicInst"
+              data-cy="docPicInst"
+              (change)="setFileData($event, 'docPicInst', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="docPicInst"
+            id="field_docPicInst"
+            data-cy="docPicInst"
+            formControlName="docPicInst"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="docPicInstContentType"
+            id="field_docPicInstContentType"
+            formControlName="docPicInstContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.userGovernmentID.idVerified" for="field_idVerified">Id Verified</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="idVerified"
+            id="field_idVerified"
+            data-cy="idVerified"
+            formControlName="idVerified"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.userGovernmentID.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

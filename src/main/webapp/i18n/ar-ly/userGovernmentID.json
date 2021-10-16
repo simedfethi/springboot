@@ -1,0 +1,30 @@
+{
+  "tripApp": {
+    "userGovernmentID": {
+      "home": {
+        "title": "User Government IDS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Government ID",
+        "createOrEditLabel": "Create or edit a User Government ID",
+        "notFound": "No User Government IDS found"
+      },
+      "created": "A new User Government ID is created with identifier {{ param }}",
+      "updated": "A User Government ID is updated with identifier {{ param }}",
+      "deleted": "A User Government ID is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Government ID {{ id }}?"
+      },
+      "detail": {
+        "title": "User Government ID"
+      },
+      "id": "ID",
+      "country": "Country",
+      "docType": "Doc Type",
+      "docPicRect": "Doc Pic Rect",
+      "docPicVers": "Doc Pic Vers",
+      "docPicInst": "Doc Pic Inst",
+      "idVerified": "Id Verified",
+      "user": "User"
+    }
+  }
+}

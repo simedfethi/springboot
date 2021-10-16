@@ -1,0 +1,27 @@
+{
+  "tripApp": {
+    "userPreferences": {
+      "home": {
+        "title": "UserPreferences",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau User Preferences",
+        "createOrEditLabel": "Créer ou éditer un User Preferences",
+        "notFound": "Aucun User Preferences trouvé"
+      },
+      "created": "Un nouveau User Preferences a été créé avec l'identifiant {{ param }}",
+      "updated": "Le User Preferences avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le User Preferences avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le User Preferences {{ id }} ?"
+      },
+      "detail": {
+        "title": "User Preferences"
+      },
+      "id": "ID",
+      "language": "Language",
+      "currency": "Currency",
+      "timeZone": "Time Zone",
+      "internalUser": "Internal User"
+    }
+  }
+}

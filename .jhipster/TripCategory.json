@@ -1,0 +1,29 @@
+{
+  "name": "TripCategory",
+  "fields": [
+    {
+      "fieldName": "categoryname",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "tripdetail",
+      "otherEntityRelationshipName": "category",
+      "relationshipName": "tripdetail"
+    }
+  ],
+  "entityTableName": "trip_category",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211003141327"
+}

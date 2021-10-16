@@ -1,0 +1,185 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-tripdetail-heading" data-cy="TripdetailCreateUpdateHeading" jhiTranslate="tripApp.tripdetail.home.createOrEditLabel">
+        Create or edit a Tripdetail
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.minimumList" for="field_minimumList">Minimum List</label>
+          <input
+            type="number"
+            class="form-control"
+            name="minimumList"
+            id="field_minimumList"
+            data-cy="minimumList"
+            formControlName="minimumList"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.maximumList" for="field_maximumList">Maximum List</label>
+          <input
+            type="number"
+            class="form-control"
+            name="maximumList"
+            id="field_maximumList"
+            data-cy="maximumList"
+            formControlName="maximumList"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.createdDate" for="field_createdDate">Created Date</label>
+          <div class="input-group">
+            <input
+              id="field_createdDate"
+              data-cy="createdDate"
+              type="text"
+              class="form-control"
+              name="createdDate"
+              ngbDatepicker
+              #createdDateDp="ngbDatepicker"
+              formControlName="createdDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="createdDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.lastupdated" for="field_lastupdated">Lastupdated</label>
+          <div class="input-group">
+            <input
+              id="field_lastupdated"
+              data-cy="lastupdated"
+              type="text"
+              class="form-control"
+              name="lastupdated"
+              ngbDatepicker
+              #lastupdatedDp="ngbDatepicker"
+              formControlName="lastupdated"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="lastupdatedDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.departureDate" for="field_departureDate">Departure Date</label>
+          <div class="input-group">
+            <input
+              id="field_departureDate"
+              data-cy="departureDate"
+              type="text"
+              class="form-control"
+              name="departureDate"
+              ngbDatepicker
+              #departureDateDp="ngbDatepicker"
+              formControlName="departureDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="departureDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.arrivalDate" for="field_arrivalDate">Arrival Date</label>
+          <div class="input-group">
+            <input
+              id="field_arrivalDate"
+              data-cy="arrivalDate"
+              type="text"
+              class="form-control"
+              name="arrivalDate"
+              ngbDatepicker
+              #arrivalDateDp="ngbDatepicker"
+              formControlName="arrivalDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="arrivalDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.contentDate" for="field_contentDate">Content Date</label>
+          <div class="d-flex">
+            <input
+              id="field_contentDate"
+              data-cy="contentDate"
+              type="datetime-local"
+              class="form-control"
+              name="contentDate"
+              formControlName="contentDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.tripmaster" for="field_tripmaster">Tripmaster</label>
+          <select class="form-control" id="field_tripmaster" data-cy="tripmaster" name="tripmaster" formControlName="tripmaster">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('tripmaster')!.value?.id ? editForm.get('tripmaster')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tripApp.tripdetail.category" for="field_category">Category</label>
+          <select class="form-control" id="field_category" data-cy="category" name="category" formControlName="category">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                tripCategoryOption.id === editForm.get('category')!.value?.id ? editForm.get('category')!.value : tripCategoryOption
+              "
+              *ngFor="let tripCategoryOption of tripCategoriesSharedCollection; trackBy: trackTripCategoryById"
+            >
+              {{ tripCategoryOption.categoryname }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

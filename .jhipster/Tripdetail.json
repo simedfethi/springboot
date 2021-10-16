@@ -1,0 +1,59 @@
+{
+  "name": "Tripdetail",
+  "fields": [
+    {
+      "fieldName": "minimumList",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "maximumList",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lastupdated",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "departureDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "arrivalDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "contentDate",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "tripdetail",
+      "relationshipName": "tripmaster",
+      "otherEntityField": "login"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "tripCategory",
+      "otherEntityRelationshipName": "tripdetail",
+      "relationshipName": "category",
+      "otherEntityField": "categoryname"
+    }
+  ],
+  "entityTableName": "tripdetail",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211003141326"
+}

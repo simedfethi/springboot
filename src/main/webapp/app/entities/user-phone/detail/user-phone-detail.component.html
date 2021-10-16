@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userPhone">
+      <h2 data-cy="userPhoneDetailsHeading"><span jhiTranslate="tripApp.userPhone.detail.title">User Phone</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userPhone.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userPhone.phoneNumber">Phone Number</span></dt>
+        <dd>
+          <span>{{ userPhone.phoneNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userPhone.verified">Verified</span></dt>
+        <dd>
+          <span>{{ userPhone.verified }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userPhone.internalUser">Internal User</span></dt>
+        <dd>
+          <span>{{ userPhone.internalUser?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-phone', userPhone.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

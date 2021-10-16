@@ -1,0 +1,119 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="admin (generated)" id="1633294950269-30">
+        <createTable tableName="trip_group_members">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="trip_group_membersPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-31">
+        <createTable tableName="tripdetail">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tripdetailPK"/>
+            </column>
+            <column name="arrival_date" type="date"/>
+            <column name="content_date" type="datetime(6)"/>
+            <column name="created_date" type="date"/>
+            <column name="departure_date" type="date"/>
+            <column name="lastupdated" type="date"/>
+            <column name="maximum_list" type="INT"/>
+            <column name="minimum_list" type="INT"/>
+            <column name="category_id" type="BIGINT"/>
+            <column name="tripmaster_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-32">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="tripdetail" constraintName="FK9rxaqb7wjm0tg02lfamy75hab" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="trip_category" validate="true"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-33">
+        <addForeignKeyConstraint baseColumnNames="tripmaster_id" baseTableName="tripdetail" constraintName="FKsr8d6g1mb2qwao5fx2klp2mkn" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="jhi_user" validate="true"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-1">
+        <alterSequence sequenceName="sequence_generator"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-2">
+        <alterSequence sequenceName="sequence_generator"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-3">
+        <alterSequence sequenceName="sequence_generator"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-4">
+        <alterSequence sequenceName="sequence_generator"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-5">
+        <dropDefaultValue columnDataType="varchar(20)" columnName="activation_key" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-6">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="address" tableName="application_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-7">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="categoryname" tableName="trip_category"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-8">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="content" tableName="notifications"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-9">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="country" tableName="user_government_id"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-10">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="description" tableName="trip_groups"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-11">
+        <dropDefaultValue columnDataType="varchar(255)" columnName="doc_pic_inst_content_type" tableName="user_government_id"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-12">
+        <dropDefaultValue columnDataType="varchar(255)" columnName="doc_pic_rect_content_type" tableName="user_government_id"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-13">
+        <dropDefaultValue columnDataType="varchar(255)" columnName="doc_pic_vers_content_type" tableName="user_government_id"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-14">
+        <dropDefaultValue columnDataType="varchar(255)" columnName="doc_type" tableName="user_government_id"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-15">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="email" tableName="application_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-16">
+        <dropDefaultValue columnDataType="varchar(254)" columnName="email" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-17">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="first_name" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-18">
+        <dropDefaultValue columnDataType="boolean" columnName="id_verified" tableName="user_government_id"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-19">
+        <dropDefaultValue columnDataType="varchar(256)" columnName="image_url" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-20">
+        <dropDefaultValue columnDataType="varchar(10)" columnName="lang_key" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-21">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="last_modified_by" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-22">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="last_name" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-23">
+        <dropDefaultValue columnDataType="varchar(20)" columnName="mobile_phone" tableName="application_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-24">
+        <dropDefaultValue columnDataType="varchar(20)" columnName="phone" tableName="application_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-25">
+        <dropDefaultValue columnDataType="varchar(20)" columnName="reset_key" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-26">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="time_zone" tableName="user_preferences"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-27">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="title" tableName="notifications"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-28">
+        <dropDefaultValue columnDataType="varchar(50)" columnName="title" tableName="trip_groups"/>
+    </changeSet>
+    <changeSet author="admin (generated)" id="1633294950269-29">
+        <dropDefaultValue columnDataType="boolean" columnName="verified" tableName="user_phone"/>
+    </changeSet>
+</databaseChangeLog>

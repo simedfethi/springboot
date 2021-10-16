@@ -1,0 +1,44 @@
+{
+  "name": "AdressList",
+  "fields": [
+    {
+      "fieldName": "street",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "streetSuite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "postalCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "state",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "latitude",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "longitude",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "adress_list",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211012081634"
+}

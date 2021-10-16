@@ -1,0 +1,26 @@
+{
+  "tripApp": {
+    "tripGroups": {
+      "home": {
+        "title": "TripGroups",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Trip Groups",
+        "createOrEditLabel": "Créer ou éditer un Trip Groups",
+        "notFound": "Aucun Trip Groups trouvé"
+      },
+      "created": "Un nouveau Trip Groups a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Trip Groups avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Trip Groups avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Trip Groups {{ id }} ?"
+      },
+      "detail": {
+        "title": "Trip Groups"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "internalUser": "Internal User"
+    }
+  }
+}

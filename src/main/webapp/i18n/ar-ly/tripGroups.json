@@ -1,0 +1,26 @@
+{
+  "tripApp": {
+    "tripGroups": {
+      "home": {
+        "title": "Trip Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Trip Groups",
+        "createOrEditLabel": "Create or edit a Trip Groups",
+        "notFound": "No Trip Groups found"
+      },
+      "created": "A new Trip Groups is created with identifier {{ param }}",
+      "updated": "A Trip Groups is updated with identifier {{ param }}",
+      "deleted": "A Trip Groups is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Trip Groups {{ id }}?"
+      },
+      "detail": {
+        "title": "Trip Groups"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "internalUser": "Internal User"
+    }
+  }
+}

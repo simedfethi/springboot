@@ -1,0 +1,54 @@
+{
+  "name": "UserGovernmentID",
+  "fields": [
+    {
+      "fieldName": "country",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength"],
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "docType",
+      "fieldType": "GovernmentIDType",
+      "fieldValues": "ID,PASSPORT,DRIVERLICENCE"
+    },
+    {
+      "fieldName": "docPicRect",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "docPicVers",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "docPicInst",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "idVerified",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "ugovid",
+      "relationshipName": "user",
+      "otherEntityField": "login"
+    }
+  ],
+  "entityTableName": "user_government_id",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210930202614"
+}

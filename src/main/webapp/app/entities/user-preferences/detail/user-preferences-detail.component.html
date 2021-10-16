@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userPreferences">
+      <h2 data-cy="userPreferencesDetailsHeading"><span jhiTranslate="tripApp.userPreferences.detail.title">User Preferences</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userPreferences.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userPreferences.language">Language</span></dt>
+        <dd>
+          <span>{{ userPreferences.language }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userPreferences.currency">Currency</span></dt>
+        <dd>
+          <span>{{ userPreferences.currency }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userPreferences.timeZone">Time Zone</span></dt>
+        <dd>
+          <span>{{ userPreferences.timeZone }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.userPreferences.internalUser">Internal User</span></dt>
+        <dd>
+          <span>{{ userPreferences.internalUser?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-preferences', userPreferences.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "tripApp": {
+    "adressList": {
+      "home": {
+        "title": "AdressLists",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Adress List",
+        "createOrEditLabel": "Créer ou éditer un Adress List",
+        "notFound": "Aucun Adress List trouvé"
+      },
+      "created": "Un nouveau Adress List a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Adress List avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Adress List avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Adress List {{ id }} ?"
+      },
+      "detail": {
+        "title": "Adress List"
+      },
+      "id": "ID",
+      "street": "Street",
+      "streetSuite": "Street Suite",
+      "postalCode": "Postal Code",
+      "state": "State",
+      "country": "Country",
+      "latitude": "Latitude",
+      "longitude": "Longitude"
+    }
+  }
+}

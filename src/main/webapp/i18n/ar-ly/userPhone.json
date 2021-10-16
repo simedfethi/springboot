@@ -1,0 +1,26 @@
+{
+  "tripApp": {
+    "userPhone": {
+      "home": {
+        "title": "User Phones",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Phone",
+        "createOrEditLabel": "Create or edit a User Phone",
+        "notFound": "No User Phones found"
+      },
+      "created": "A new User Phone is created with identifier {{ param }}",
+      "updated": "A User Phone is updated with identifier {{ param }}",
+      "deleted": "A User Phone is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Phone {{ id }}?"
+      },
+      "detail": {
+        "title": "User Phone"
+      },
+      "id": "ID",
+      "phoneNumber": "Phone Number",
+      "verified": "Verified",
+      "internalUser": "Internal User"
+    }
+  }
+}

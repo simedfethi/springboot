@@ -1,0 +1,78 @@
+<div>
+  <h2 id="page-heading" data-cy="TripCategoryHeading">
+    <span jhiTranslate="tripApp.tripCategory.home.title">Trip Categories</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tripApp.tripCategory.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-trip-category"
+        [routerLink]="['/trip-category/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tripApp.tripCategory.home.createLabel"> Create a new Trip Category </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="tripCategories?.length === 0">
+    <span jhiTranslate="tripApp.tripCategory.home.notFound">No tripCategories found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="tripCategories && tripCategories.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripCategory.categoryname">Categoryname</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tripCategory of tripCategories; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/trip-category', tripCategory.id, 'view']">{{ tripCategory.id }}</a>
+          </td>
+          <td>{{ tripCategory.categoryname }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/trip-category', tripCategory.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/trip-category', tripCategory.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(tripCategory)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

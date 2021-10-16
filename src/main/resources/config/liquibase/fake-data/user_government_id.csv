@@ -1,0 +1,11 @@
+id;country;doc_type;doc_pic_rect;doc_pic_rect_content_type;doc_pic_vers;doc_pic_vers_content_type;doc_pic_inst;doc_pic_inst_content_type;id_verified
+1;Bhoutan;PASSPORT;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;false
+2;Bhoutan;ID;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;true
+3;Pakistan;DRIVERLICENCE;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;true
+4;Timor oriental;ID;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;false
+5;Autriche;DRIVERLICENCE;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;true
+6;Brésil;DRIVERLICENCE;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;true
+7;Ouganda;ID;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;true
+8;Indonésie;ID;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;false
+9;Macédoine;PASSPORT;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;true
+10;Timor oriental;PASSPORT;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;../fake-data/blob/hipster.png;image/png;false

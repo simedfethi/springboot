@@ -1,0 +1,125 @@
+<div>
+  <h2 id="page-heading" data-cy="UserGovernmentIDHeading">
+    <span jhiTranslate="tripApp.userGovernmentID.home.title">User Government IDS</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tripApp.userGovernmentID.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-user-government-id"
+        [routerLink]="['/user-government-id/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tripApp.userGovernmentID.home.createLabel"> Create a new User Government ID </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="userGovernmentIDS?.length === 0">
+    <span jhiTranslate="tripApp.userGovernmentID.home.notFound">No userGovernmentIDS found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="userGovernmentIDS && userGovernmentIDS.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.userGovernmentID.country">Country</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.userGovernmentID.docType">Doc Type</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.userGovernmentID.docPicRect">Doc Pic Rect</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.userGovernmentID.docPicVers">Doc Pic Vers</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.userGovernmentID.docPicInst">Doc Pic Inst</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.userGovernmentID.idVerified">Id Verified</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.userGovernmentID.user">User</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userGovernmentID of userGovernmentIDS; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/user-government-id', userGovernmentID.id, 'view']">{{ userGovernmentID.id }}</a>
+          </td>
+          <td>{{ userGovernmentID.country }}</td>
+          <td jhiTranslate="{{ 'tripApp.GovernmentIDType.' + userGovernmentID.docType }}">{{ userGovernmentID.docType }}</td>
+          <td>
+            <a *ngIf="userGovernmentID.docPicRect" (click)="openFile(userGovernmentID.docPicRect, userGovernmentID.docPicRectContentType)">
+              <img
+                [src]="'data:' + userGovernmentID.docPicRectContentType + ';base64,' + userGovernmentID.docPicRect"
+                style="max-height: 30px"
+                alt="userGovernmentID image"
+              />
+            </a>
+            <span *ngIf="userGovernmentID.docPicRect"
+              >{{ userGovernmentID.docPicRectContentType }}, {{ byteSize(userGovernmentID.docPicRect) }}</span
+            >
+          </td>
+          <td>
+            <a *ngIf="userGovernmentID.docPicVers" (click)="openFile(userGovernmentID.docPicVers, userGovernmentID.docPicVersContentType)">
+              <img
+                [src]="'data:' + userGovernmentID.docPicVersContentType + ';base64,' + userGovernmentID.docPicVers"
+                style="max-height: 30px"
+                alt="userGovernmentID image"
+              />
+            </a>
+            <span *ngIf="userGovernmentID.docPicVers"
+              >{{ userGovernmentID.docPicVersContentType }}, {{ byteSize(userGovernmentID.docPicVers) }}</span
+            >
+          </td>
+          <td>
+            <a *ngIf="userGovernmentID.docPicInst" (click)="openFile(userGovernmentID.docPicInst, userGovernmentID.docPicInstContentType)">
+              <img
+                [src]="'data:' + userGovernmentID.docPicInstContentType + ';base64,' + userGovernmentID.docPicInst"
+                style="max-height: 30px"
+                alt="userGovernmentID image"
+              />
+            </a>
+            <span *ngIf="userGovernmentID.docPicInst"
+              >{{ userGovernmentID.docPicInstContentType }}, {{ byteSize(userGovernmentID.docPicInst) }}</span
+            >
+          </td>
+          <td>{{ userGovernmentID.idVerified }}</td>
+          <td>
+            {{ userGovernmentID.user?.login }}
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/user-government-id', userGovernmentID.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/user-government-id', userGovernmentID.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(userGovernmentID)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

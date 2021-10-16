@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="notifications">
+      <h2 data-cy="notificationsDetailsHeading"><span jhiTranslate="tripApp.notifications.detail.title">Notifications</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ notifications.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.notifications.title">Title</span></dt>
+        <dd>
+          <span>{{ notifications.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.notifications.content">Content</span></dt>
+        <dd>
+          <span>{{ notifications.content }}</span>
+        </dd>
+        <dt><span jhiTranslate="tripApp.notifications.user">User</span></dt>
+        <dd>
+          <span>{{ notifications.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/notifications', notifications.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

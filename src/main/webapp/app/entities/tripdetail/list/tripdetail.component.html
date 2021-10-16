@@ -1,0 +1,100 @@
+<div>
+  <h2 id="page-heading" data-cy="TripdetailHeading">
+    <span jhiTranslate="tripApp.tripdetail.home.title">Tripdetails</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tripApp.tripdetail.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tripdetail"
+        [routerLink]="['/tripdetail/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tripApp.tripdetail.home.createLabel"> Create a new Tripdetail </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="tripdetails?.length === 0">
+    <span jhiTranslate="tripApp.tripdetail.home.notFound">No tripdetails found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="tripdetails && tripdetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.minimumList">Minimum List</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.maximumList">Maximum List</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.createdDate">Created Date</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.lastupdated">Lastupdated</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.departureDate">Departure Date</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.arrivalDate">Arrival Date</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.contentDate">Content Date</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.tripmaster">Tripmaster</span></th>
+          <th scope="col"><span jhiTranslate="tripApp.tripdetail.category">Category</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tripdetail of tripdetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tripdetail', tripdetail.id, 'view']">{{ tripdetail.id }}</a>
+          </td>
+          <td>{{ tripdetail.minimumList }}</td>
+          <td>{{ tripdetail.maximumList }}</td>
+          <td>{{ tripdetail.createdDate | formatMediumDate }}</td>
+          <td>{{ tripdetail.lastupdated | formatMediumDate }}</td>
+          <td>{{ tripdetail.departureDate | formatMediumDate }}</td>
+          <td>{{ tripdetail.arrivalDate | formatMediumDate }}</td>
+          <td>{{ tripdetail.contentDate | formatMediumDatetime }}</td>
+          <td>
+            {{ tripdetail.tripmaster?.login }}
+          </td>
+          <td>
+            <div *ngIf="tripdetail.category">
+              <a [routerLink]="['/trip-category', tripdetail.category?.id, 'view']">{{ tripdetail.category?.categoryname }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tripdetail', tripdetail.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tripdetail', tripdetail.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(tripdetail)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
